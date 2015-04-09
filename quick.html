@@ -1,0 +1,96 @@
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <script>
+    window.addEventListener('load', function(){ // on page load
+
+      document.body.addEventListener('touchstart', start, false)
+      document.body.addEventListener('mousedown', start, false)
+      document.body.addEventListener('touchend', end, false)
+      document.body.addEventListener('mouseup', end, false)
+      document.body.addEventListener('touchmove', move, false)
+      document.body.addEventListener('mousemove', move, false)
+
+      var distance = 0;
+      var startpos = 0;
+      var index =0 ;
+      var max = 2;
+      function start(e) {
+        if(e.changedtouches) {
+          e = e.changedTouches[0]
+        }
+        distance = e.pageY;
+      }
+
+      function move(e) {
+      if(e.which === 0) return;
+        if(e.changedtouches) {
+          e = e.changedTouches[0]
+        }
+        // e.target.parentNode.style.marginLeft = -(distance - e.pageX)
+      }
+
+      function end(e) {
+        if(e.changedtouches) {
+          e = e.changedTouches[0]
+        }
+        // e = e.target.parentNode;
+        if(Math.abs(distance - e.pageX) < 30) {
+          e.target.parentNode.style.marginLeft = startpos;
+        }
+      }
+
+    }, false);
+    </script>
+    <style>
+    body {
+      margin: 0;
+      padding: 0
+    }
+    .fixed-nav {
+      width: 25px;
+      position: absolute;
+      height: 100%;
+      right: 0;
+      padding: 0;
+      margin: 0;
+      padding-top: 50px;
+    }
+    .fixed-nav li {
+      list-style-type: none;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+    }
+    .fixed-nav li.selected {
+      font-size: 1.4em;
+      color: green;
+    }
+    </style>
+  </head>
+  <body>
+    <ul class="fixed-nav">
+      <li>*</li>
+    </ul>
+    <div id="allitems" class="content">
+      <div class="row"><div class="title">Primary Weapons</div><div class="sort-primary"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
+      <div class="row"><div class="title">Special Weapons</div><div class="sort-special"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
+      <div class="row"><div class="title">Heavy Weapons</div><div class="sort-heavy"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
+      <div class="row"><div class="title">Helmet</div><div class="sort-helmet"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
+      <div class="row"><div class="title">Gauntlets</div><div class="sort-gauntlets"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
+      <div class="row"><div class="title">Chest Armor</div><div class="sort-chest"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
+      <div class="row"><div class="title">Leg Armor</div><div class="sort-leg"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
+      <div class="row"><div class="title">Shader</div><div class="sort-armor"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
+      <div class="row"><div class="title">Misc</div><div class="sort-miscellaneous"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
+      <div class="row"><div class="title">Class</div><div class="sort-class"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
+      <div class="row"><div class="title">Emblem</div><div class="sort-emblem"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
+      <div class="row"><div class="title">Titan</div><div class="sort-titan"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
+      <div class="row"><div class="title">Hunter</div><div class="sort-hunter"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
+      <div class="row"><div class="title">Warlock</div><div class="sort-warlock"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
+      <div class="row"><div class="title">Vehicle</div><div class="sort-vehicle"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
+      <div class="row"><div class="title">Ship</div><div class="sort-ship"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
+      <div class="row"><div class="title">Ghost</div><div class="sort-ghost"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
+    </div>
+  </body>
+</html>
