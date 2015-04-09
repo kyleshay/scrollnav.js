@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <title>scrollnav.js</script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
+    <script type="text/javascript" src="scrollnav.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="scrollnav.css">
+    <script>
+    window.addEventListener('load', function(){ // on page load
+      var o = {
+        nav: document.getElementById('nav'),
+        hover: document.getElementById('hover')
+      }
+      scrollnav(o);
+    }, false);
+    </script>
+  </head>
+  <body>
+    <ul id="hover" class="hover">
+    </ul>
+    <ul id="nav" class="fixed-nav">
+    </ul>
+    <div id="allitems" class="content">
+      <div class="row"><div class="title">Primary Weapons</div><div class="nav-content sort-primary"></div></div>
+      <div class="row"><div class="title">Special Weapons</div><div class="nav-content sort-special"></div></div>
+      <div class="row"><div class="title">Heavy Weapons</div><div class="nav-content sort-heavy"></div></div>
+      <div class="row"><div class="title">Helmet</div><div class="nav-content sort-helmet"></div></div>
+      <div class="row"><div class="title">Gauntlets</div><div class="nav-content sort-gauntlets"></div></div>
+      <div class="row"><div class="title">Chest Armor</div><div class="nav-content sort-chest"></div></div>
+      <div class="row"><div class="title">Leg Armor</div><div class="nav-content sort-leg"></div></div>
+      <div class="row"><div class="title">Shader</div><div class="nav-content sort-armor"></div></div>
+      <div class="row"><div class="title">Misc</div><div class="nav-content sort-miscellaneous"></div></div>
+      <div class="row"><div class="title">Class</div><div class="nav-content sort-class"></div></div>
+      <div class="row"><div class="title">Emblem</div><div class="nav-content sort-emblem"></div></div>
+      <div class="row"><div class="title">Titan</div><div class="nav-content sort-titan"></div></div>
+      <div class="row"><div class="title">Hunter</div><div class="nav-content sort-hunter"></div></div>
+      <div class="row"><div class="title">Warlock</div><div class="nav-content sort-warlock"></div></div>
+      <div class="row"><div class="title">Vehicle</div><div class="nav-content sort-vehicle"></div></div>
+      <div class="row"><div class="title">Ship</div><div class="nav-content sort-ship"></div></div>
+      <div class="row"><div class="title">Ghost</div><div class="nav-content sort-ghost"></div></div>
+    </div>
+  </body>
+</html>
