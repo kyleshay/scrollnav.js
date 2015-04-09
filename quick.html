@@ -7,18 +7,21 @@
 
       function scrollnav(options) {
         var nav = options.nav;
-        var hover = options.hover;
-        var content = '.content';
-        var title = '.title';
-        var row = '.row';
+        var content = options.content || '.nav-content';
+        var title = options.title || '.title';
+        var row = options.row || '.row';
+
+        var hover = document.createElement('div');
+        hover.id = 'hover';
+        hover.className = 'hover';
+        document.body.appendChild(hover);
 
         var rows = document.querySelectorAll(row);
-
         var padding = Math.floor(window.screen.height / (rows.length + 1) / 8);
         for(var i = 0; i < rows.length; i++) {
           var li = document.createElement('li');
           li.innerText = '*';
-          li.dataset.id = rows[i].querySelector(content).id;
+          li.dataset.id = rows[i].querySelector(content).className.replace('nav-content ', '');
           li.dataset.title = rows[i].querySelector(title).innerText;
           nav.appendChild(li);
         }
@@ -38,13 +41,14 @@
         }
 
         function move(e) {
+          console.log('asdf')
           e.preventDefault();
           e = update(e);
           if(valid(e)) {
             hover.style.display = 'block';
 
             if(e.dataset.id === undefined) return;
-            e.classList.add('selected')
+            e.classList.add('selected');
             current = e.dataset.id;
             hover.innerText = e.dataset.title;
           }
@@ -53,7 +57,8 @@
         function end(e) {
           e = update(e);
           if(valid(e)) {
-            document.getElementById(current).parentNode.scrollIntoView();
+            document.querySelector('.' + current).parentNode.scrollIntoView();
+            window.scrollBy(0, -50)
           }
         }
 
@@ -101,7 +106,9 @@
       right: 0;
       padding: 0;
       margin: 0;
-      padding-top: 70px;
+      margin-top: 25px;
+      z-index: 99;
+      padding-top: 50px;
     }
     .fixed-nav li {
       list-style-type: none;
@@ -125,6 +132,7 @@
       overflow-y:scroll;
       padding:5px;
     }
+
     </style>
   </head>
   <body>
@@ -133,23 +141,23 @@
     <ul id="nav" class="fixed-nav">
     </ul>
     <div id="allitems" class="content">
-      <div class="row"><div class="title">Primary Weapons</div><div class="content" id="sort-primary"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
-      <div class="row"><div class="title">Special Weapons</div><div class="content" id="sort-special"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
-      <div class="row"><div class="title">Heavy Weapons</div><div class="content" id="sort-heavy"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
-      <div class="row"><div class="title">Helmet</div><div class="content" id="sort-helmet"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
-      <div class="row"><div class="title">Gauntlets</div><div class="content" id="sort-gauntlets"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
-      <div class="row"><div class="title">Chest Armor</div><div class="content" id="sort-chest"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
-      <div class="row"><div class="title">Leg Armor</div><div class="content" id="sort-leg"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
-      <div class="row"><div class="title">Shader</div><div class="content" id="sort-armor"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
-      <div class="row"><div class="title">Misc</div><div class="content" id="sort-miscellaneous"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
-      <div class="row"><div class="title">Class</div><div class="content" id="sort-class"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
-      <div class="row"><div class="title">Emblem</div><div class="content" id="sort-emblem"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
-      <div class="row"><div class="title">Titan</div><div class="content" id="sort-titan"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
-      <div class="row"><div class="title">Hunter</div><div class="content" id="sort-hunter"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
-      <div class="row"><div class="title">Warlock</div><div class="content" id="sort-warlock"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
-      <div class="row"><div class="title">Vehicle</div><div class="content" id="sort-vehicle"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
-      <div class="row"><div class="title">Ship</div><div class="content" id="sort-ship"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
-      <div class="row"><div class="title">Ghost</div><div class="content" id="sort-ghost"><br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X<br />X</div></div>
+      <div class="row"><div class="title">Primary Weapons</div><div class="nav-content sort-primary"></div></div>
+      <div class="row"><div class="title">Special Weapons</div><div class="nav-content sort-special"></div></div>
+      <div class="row"><div class="title">Heavy Weapons</div><div class="nav-content sort-heavy"></div></div>
+      <div class="row"><div class="title">Helmet</div><div class="nav-content sort-helmet"></div></div>
+      <div class="row"><div class="title">Gauntlets</div><div class="nav-content sort-gauntlets"></div></div>
+      <div class="row"><div class="title">Chest Armor</div><div class="nav-content sort-chest"></div></div>
+      <div class="row"><div class="title">Leg Armor</div><div class="nav-content sort-leg"></div></div>
+      <div class="row"><div class="title">Shader</div><div class="nav-content sort-armor"></div></div>
+      <div class="row"><div class="title">Misc</div><div class="nav-content sort-miscellaneous"></div></div>
+      <div class="row"><div class="title">Class</div><div class="nav-content sort-class"></div></div>
+      <div class="row"><div class="title">Emblem</div><div class="nav-content sort-emblem"></div></div>
+      <div class="row"><div class="title">Titan</div><div class="nav-content sort-titan"></div></div>
+      <div class="row"><div class="title">Hunter</div><div class="nav-content sort-hunter"></div></div>
+      <div class="row"><div class="title">Warlock</div><div class="nav-content sort-warlock"></div></div>
+      <div class="row"><div class="title">Vehicle</div><div class="nav-content sort-vehicle"></div></div>
+      <div class="row"><div class="title">Ship</div><div class="nav-content sort-ship"></div></div>
+      <div class="row"><div class="title">Ghost</div><div class="nav-content sort-ghost"></div></div>
     </div>
   </body>
 </html>
