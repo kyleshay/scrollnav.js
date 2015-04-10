@@ -1,4 +1,5 @@
 function scrollnav(options) {
+
   var nav = options.nav;
   var nav = document.getElementById('nav');
 
