@@ -38,9 +38,7 @@ var scrollnav = (function () {
     nav.addEventListener('mouseup', end, false);
     nav.addEventListener('touchmove', move, false);
     nav.addEventListener('mousemove', move, false);
-    document.addEventListener('scroll', function(e) {
-      debounce(scroll(e), 250);
-    }, false);
+    document.addEventListener('scroll', debounce(scroll, 50), false);
   }
 
   var current = 0;
@@ -78,7 +76,7 @@ var scrollnav = (function () {
     }
   }
 
-  function scroll(e) {
+  function scroll() {
     // for(var r = 0; r < rows.length; r++) {
     //   // console.log('adsf', rows[r].querySelector('.title').classList.remove)
     //   rows[r].querySelector('.title').classList.remove('sticky');
@@ -102,7 +100,7 @@ var scrollnav = (function () {
       }
     }
 
-    document.getElementById('thetitle').innerText = sTop < offset ? '' : rows[r-1].querySelector('.title').innerText.trim();
+    // document.getElementById('thetitle').innerText = sTop < offset ? '' : rows[r-1].querySelector('.title').innerText.trim();
     nav.children[r-1].className = 'selected';
     // console.log(rows[r-1].innerText.trim())
     // if(document.body.scrollTop >
