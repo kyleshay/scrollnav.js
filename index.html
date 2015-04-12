@@ -9,13 +9,14 @@
     window.addEventListener('load', function(){ // on page load
       var o = {
         nav: document.getElementById('nav'),
-        hover: document.getElementById('hover')
+        offset: 55
       }
-      scrollnav(o);
+      scrollnav.init(o);
     }, false);
     </script>
   </head>
   <body>
+    <div id="thetitle" class="sticky"></div>
     <ul id="hover" class="hover">
     </ul>
     <ul id="nav" class="fixed-nav">

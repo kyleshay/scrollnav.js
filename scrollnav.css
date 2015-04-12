@@ -4,6 +4,10 @@ body {
   padding: 0;
   font: helvetica;
 }
+.sticky {
+  position: fixed;
+  top: 0;
+}
 .fixed-nav {
   background: rgba(0,0,0,.05);
   color: rgba(255,255,255,.6);
@@ -22,6 +26,7 @@ body {
   padding: 0;
   margin: 0;
   text-align: center;
+  cursor: pointer;
 }
 .fixed-nav li.selected {
   background: rgba(30, 30, 30, .1);
@@ -37,7 +42,6 @@ body {
   left:50%;
   margin-top:-100px;
   margin-left:-100px;
-  overflow-y:scroll;
   padding:5px;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.75);
   -webkit-border-radius: 3px;
