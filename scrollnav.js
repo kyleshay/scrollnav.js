@@ -22,7 +22,7 @@ var scrollnav = (function () {
       var li = document.createElement('li');
       li.innerHTML = '&#9900;';
       li.style.padding = padding + 'px'
-      li.dataset.id = rows[i].querySelector(content).className.replace('nav-content ', '');
+      li.dataset.id = i;
       li.dataset.title = rows[i].querySelector(title).innerText;
 
       if(i === 0) {
@@ -71,8 +71,7 @@ var scrollnav = (function () {
   function end(e) {
     e = update(e);
     if(valid(e)) {
-      document.querySelector('.' + current).parentNode.scrollIntoView();
-      window.scrollBy(0, -50)
+			document.body.scrollTop = rows[current].getBoundingClientRect().top + window.pageYOffset - 50;
     }
   }
 
@@ -81,7 +80,6 @@ var scrollnav = (function () {
     //   // console.log('adsf', rows[r].querySelector('.title').classList.remove)
     //   rows[r].querySelector('.title').classList.remove('sticky');
     // }
-    console.log(nav.children.length)
     // for(var c = 0; r < nav.children.length; c++) {
     //   // console.log('adsf', rows[r].querySelector('.title').classList.remove)
     //   nav.children[c].className = '';
